@@ -50,7 +50,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [test, lint]
+    needs: [test, lint]       # the next steps will only run if the test and lint jobs are successful
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
