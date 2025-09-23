@@ -25,10 +25,10 @@ FROM nginxinc/nginx-unprivileged:alpine-slim
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Copy the custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose the port (8080 is the default for unprivileged Nginx images)
-EXPOSE 80
+EXPOSE 8080
 
 # The default user is already set to `nginx` in the base image,
 # which is a good security practice. We don't need to specify `USER nginx`.
