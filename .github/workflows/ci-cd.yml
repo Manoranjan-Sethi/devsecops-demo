@@ -106,6 +106,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
+        # here we want that everytime an image is built its unique
+        # good for traceability, rollback and for production deployments
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=sha,format=long
