@@ -1,21 +1,15 @@
 # Build stage
-# Using a specific, pinned version for better reproducibility and security
 FROM node:20.10.0-alpine3.18 AS build
 
-# Set working directory
 WORKDIR /app
 
 # Copy package files first to leverage Docker's layer caching
 COPY package.json package-lock.json ./
 
-# Install dependencies
+# Install dependencies clean install
 RUN npm ci
-
-# Copy all source files
 COPY . .
-
-# Build the application
-RUN npm run build
+RUN npm run build  
 
 # Production stage
 # Use a hardened, non-root user image like `nginxinc/nginx-unprivileged` for enhanced security.
